@@ -1,0 +1,23 @@
+create schema tienda;
+use tienda;
+
+CREATE TABLE Productos(id int primary key NOT NULL auto_increment);
+
+-- agregar columna a Productos
+ALTER TABLE Productos ADD COLUMN nombre varchar(120) NOT NULL;
+
+ALTER TABLE Productos ADD COLUMN precio int NOT NULL AFTER id;
+
+alter table productos rename inventario;
+
+show tables;
+
+drop table inventario; 
+
+CREATE TABLE productos(id int primary key NOT NULL auto_increment);
+
+ALTER TABLE productos ADD COLUMN nombre varchar(255) NOT NULL;
+
+ALTER TABLE productos CHANGE COLUMN nombre precio int not null; 
+
+alter table productos drop column precio;

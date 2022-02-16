@@ -1,0 +1,97 @@
+Microsoft Windows [Version 10.0.22000.434]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Reyna>cd C:\Program Files\MySQL\MySQL Server 8.0\bin
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysql -uroot -p
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 18
+Server version: 8.0.28 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show database
+    -> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database
+show database' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+6 rows in set (0.01 sec)
+
+mysql> create database tienda;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use tienda;
+Database changed
+mysql> show tables;
+Empty set (0.01 sec)
+
+mysql> create table producto (nombre varchar(120), descripcion text);
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_tienda |
++------------------+
+| producto         |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> insert into producto (nombre, descripcion) values ("manzana", "fruta");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from producto;
++---------+-------------+
+| nombre  | descripcion |
++---------+-------------+
+| manzana | fruta       |
++---------+-------------+
+1 row in set (0.00 sec)
+
+mysql> Delete from producto where nombre = "manzana";
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from producto;
+Empty set (0.00 sec)
+
+mysql> drop table producto;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> drop table producto;
+ERROR 1051 (42S02): Unknown table 'tienda.producto'
+mysql> drop database tienda;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+6 rows in set (0.01 sec)
